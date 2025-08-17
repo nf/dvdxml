@@ -161,25 +161,24 @@ Summary: 4 tracks and 0 chapters found around 40 minutes.
 
 ### FFmpeg Extraction Output
 
-With `-episodes` and `-ffmpeg` flags, the program generates ready-to-use FFmpeg commands:
+With `-episodes` and `-ffmpeg` flags, the program outputs only the FFmpeg commands (suitable for piping or saving to scripts):
 
+```bash
+$ go run dvd_metadata.go -episodes 40 -ffmpeg source/s1d1.xml
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#1' -map 0 -c copy "s1d1_episodes_track_01.mkv"
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#2' -map 0 -c copy "s1d1_episodes_track_02.mkv"
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#3' -map 0 -c copy "s1d1_episodes_track_03.mkv"
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#4' -map 0 -c copy "s1d1_episodes_track_04.mkv"
 ```
---- FFmpeg Commands ---
-# Commands to extract episodes using dvdvideo demuxer
-# DVD Path: s1d1/Law And Order Svu
-# Note: Adjust paths as needed for your system
 
-# Episode 1 (Track 1: 41.68 minutes)
-ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#1' -map 0 -c copy "s1d1_episodes_track_01.mkv"
+This clean output makes it easy to:
+```bash
+# Save commands to a script
+go run dvd_metadata.go -episodes 40 -ffmpeg source/ > extract_episodes.sh
+chmod +x extract_episodes.sh
 
-# Episode 2 (Track 2: 41.00 minutes)  
-ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#2' -map 0 -c copy "s1d1_episodes_track_02.mkv"
-
-# Batch extraction script:
-#!/bin/bash
-# Extract all episodes
-ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#1' -map 0 -c copy "s1d1_episodes_track_01.mkv"
-ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#2' -map 0 -c copy "s1d1_episodes_track_02.mkv"
+# Pipe directly to bash for immediate execution
+go run dvd_metadata.go -episodes 40 -ffmpeg source/s1d1.xml | bash
 ```
 
 The generated commands use:
