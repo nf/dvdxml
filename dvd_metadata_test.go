@@ -413,8 +413,8 @@ func TestFFmpegCommandGeneration(t *testing.T) {
 	if !strings.Contains(cmd, "ffmpeg") {
 		t.Error("Command should contain 'ffmpeg'")
 	}
-	if !strings.Contains(cmd, "dvdvideo:") {
-		t.Error("Command should contain 'dvdvideo:'")
+	if !strings.Contains(cmd, "-f dvdvideo") {
+		t.Error("Command should contain '-f dvdvideo'")
 	}
 	if !strings.Contains(cmd, "-c copy") {
 		t.Error("Command should contain '-c copy' for stream copying")
@@ -475,7 +475,7 @@ func TestFFmpegModeOutput(t *testing.T) {
 			if !strings.Contains(cmd, "ffmpeg") {
 				t.Error("Command should contain ffmpeg")
 			}
-			if !strings.Contains(cmd, "dvdvideo:") {
+			if !strings.Contains(cmd, "-f dvdvideo") {
 				t.Error("Command should use dvdvideo demuxer")
 			}
 		}
