@@ -1,119 +1,22 @@
 package main
 
 import (
-	"bytes"
-	"encoding/xml"
+	"dvd-metadata-parser/dvd"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
 
-// DVD represents the complete DVD metadata structure
-type DVD struct {
-	XMLName      xml.Name `xml:"lsdvd"`
-	Device       string   `xml:"device"`
-	Title        string   `xml:"title"`
-	VMGID        string   `xml:"vmg_id"`
-	ProviderID   string   `xml:"provider_id"`
-	Tracks       []Track  `xml:"track"`
-	LongestTrack int      `xml:"longest_track"`
-}
-
-// Track represents a DVD track with video, audio, subtitle, and chapter information
-type Track struct {
-	Index           int              `xml:"ix"`
-	Length          float64          `xml:"length"`
-	VTSID           string           `xml:"vts_id"`
-	VTS             int              `xml:"vts"`
-	TTN             int              `xml:"ttn"`
-	FPS             float64          `xml:"fps"`
-	Format          string           `xml:"format"`
-	Aspect          string           `xml:"aspect"`
-	Width           int              `xml:"width"`
-	Height          int              `xml:"height"`
-	DF              string           `xml:"df"`
-	Palette         Palette          `xml:"palette"`
-	Angles          int              `xml:"angles"`
-	AudioStreams    []AudioStream    `xml:"audio"`
-	SubtitleStreams []SubtitleStream `xml:"subp"`
-	Chapters        []Chapter        `xml:"chapter"`
-	Cells           []Cell           `xml:"cell"`
-}
-
-// Palette represents the color palette information
-type Palette struct {
-	Colors []string `xml:"color"`
-}
-
-// AudioStream represents an audio track
-type AudioStream struct {
-	Index        int    `xml:"ix"`
-	LanguageCode string `xml:"langcode"`
-	Language     string `xml:"language"`
-	Format       string `xml:"format"`
-	Frequency    int    `xml:"frequency"`
-	Quantization string `xml:"quantization"`
-	Channels     int    `xml:"channels"`
-	APMode       int    `xml:"ap_mode"`
-	Content      string `xml:"content"`
-	StreamID     string `xml:"streamid"`
-}
-
-// SubtitleStream represents a subtitle track
-type SubtitleStream struct {
-	Index        int    `xml:"ix"`
-	LanguageCode string `xml:"langcode"`
-	Language     string `xml:"language"`
-	Content      string `xml:"content"`
-	StreamID     string `xml:"streamid"`
-}
-
-// Chapter represents a chapter within a track
-type Chapter struct {
-	Index     int     `xml:"ix"`
-	Length    float64 `xml:"length"`
-	StartCell int     `xml:"startcell"`
-}
-
-// Cell represents a cell within a track
-type Cell struct {
-	Index  int     `xml:"ix"`
-	Length float64 `xml:"length"`
-}
-
-// parseDVDMetadata parses a single XML file and returns DVD metadata
-func parseDVDMetadata(filename string) (*DVD, error) {
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read file %s: %v", filename, err)
-	}
-
-	// Fix common XML entity issues in the data
-	// Fix malformed entity &Scan -> &amp;Scan
-	data = bytes.ReplaceAll(data, []byte("Pan&Scan"), []byte("Pan&amp;Scan"))
-	// Fix other potential malformed entities
-	data = bytes.ReplaceAll(data, []byte("&Letterbox"), []byte("&amp;Letterbox"))
-
-	var dvd DVD
-	err = xml.Unmarshal(data, &dvd)
-	if err != nil {
-		return nil, fmt.Errorf("failed to parse XML in file %s: %v", filename, err)
-	}
-
-	return &dvd, nil
-}
-
 // printDVDSummary prints a summary of the DVD metadata
-func printDVDSummary(filename string, dvd *DVD) {
+func printDVDSummary(filename string, dvdData *dvd.DVD) {
 	fmt.Printf("\n=== %s ===\n", filename)
-	fmt.Printf("Device: %s\n", dvd.Device)
-	fmt.Printf("Title: %s\n", dvd.Title)
-	fmt.Printf("Provider ID: %s\n", dvd.ProviderID)
-	fmt.Printf("Number of tracks: %d\n", len(dvd.Tracks))
-	fmt.Printf("Longest track: %d\n", dvd.LongestTrack)
+	fmt.Printf("Device: %s\n", dvdData.Device)
+	fmt.Printf("Title: %s\n", dvdData.Title)
+	fmt.Printf("Provider ID: %s\n", dvdData.ProviderID)
+	fmt.Printf("Number of tracks: %d\n", len(dvdData.Tracks))
+	fmt.Printf("Longest track: %d\n", dvdData.LongestTrack)
 
-	for i, track := range dvd.Tracks {
+	for i, track := range dvdData.Tracks {
 		fmt.Printf("\n  Track %d:\n", track.Index)
 		fmt.Printf("    Length: %.2f seconds (%.2f minutes)\n", track.Length, track.Length/60)
 		fmt.Printf("    Resolution: %dx%d\n", track.Width, track.Height)
@@ -149,8 +52,8 @@ func printDVDSummary(filename string, dvd *DVD) {
 		}
 
 		if i >= 4 { // Limit number of tracks shown for readability
-			if len(dvd.Tracks) > 5 {
-				fmt.Printf("\n  ... and %d more tracks\n", len(dvd.Tracks)-5)
+			if len(dvdData.Tracks) > 5 {
+				fmt.Printf("\n  ... and %d more tracks\n", len(dvdData.Tracks)-5)
 			}
 			break
 		}
@@ -158,7 +61,7 @@ func printDVDSummary(filename string, dvd *DVD) {
 }
 
 // printDetailedTrackInfo prints detailed information about a specific track
-func printDetailedTrackInfo(track Track) {
+func printDetailedTrackInfo(track dvd.Track) {
 	fmt.Printf("\n--- Detailed Track %d Information ---\n", track.Index)
 	fmt.Printf("Length: %.2f seconds\n", track.Length)
 	fmt.Printf("Video: %s, %dx%d, %s, %.2f fps\n", track.Format, track.Width, track.Height, track.Aspect, track.FPS)
@@ -224,18 +127,20 @@ func main() {
 	fmt.Printf("Found %d XML files to process\n", len(xmlFiles))
 
 	for _, xmlFile := range xmlFiles {
-		dvd, err := parseDVDMetadata(xmlFile)
+		dvdData, err := dvd.ParseFile(xmlFile)
 		if err != nil {
 			fmt.Printf("Error parsing %s: %v\n", xmlFile, err)
 			continue
 		}
 
-		printDVDSummary(filepath.Base(xmlFile), dvd)
+		printDVDSummary(filepath.Base(xmlFile), dvdData)
 
 		// If detailed mode is enabled, show detailed info for the longest track
-		if detailed && dvd.LongestTrack > 0 && dvd.LongestTrack <= len(dvd.Tracks) {
-			longestTrack := dvd.Tracks[dvd.LongestTrack-1] // Convert to 0-based index
-			printDetailedTrackInfo(longestTrack)
+		if detailed {
+			longestTrack := dvdData.GetLongestTrack()
+			if longestTrack != nil {
+				printDetailedTrackInfo(*longestTrack)
+			}
 		}
 	}
 }

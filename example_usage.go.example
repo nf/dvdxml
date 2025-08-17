@@ -1,0 +1,63 @@
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"dvd-metadata-parser/dvd"
+)
+
+// This example demonstrates how to use the dvd package to parse DVD metadata
+func main() {
+	// Parse a single XML file
+	dvdData, err := dvd.ParseFile("source/s1d1.xml")
+	if err != nil {
+		log.Fatalf("Error parsing DVD metadata: %v", err)
+	}
+
+	// Display basic DVD information
+	fmt.Printf("DVD Title: %s\n", dvdData.Title)
+	fmt.Printf("Device: %s\n", dvdData.Device)
+	fmt.Printf("Provider ID: %s\n", dvdData.ProviderID)
+	fmt.Printf("Number of tracks: %d\n", len(dvdData.Tracks))
+	fmt.Printf("Total duration: %.2f minutes\n", dvdData.GetTotalDuration()/60)
+
+	// Get available languages
+	audioLangs := dvdData.GetAudioLanguages()
+	subLangs := dvdData.GetSubtitleLanguages()
+	fmt.Printf("Audio languages: %v\n", audioLangs)
+	fmt.Printf("Subtitle languages: %v\n", subLangs)
+
+	// Get the longest track
+	longestTrack := dvdData.GetLongestTrack()
+	if longestTrack != nil {
+		fmt.Printf("\nLongest track (#%d):\n", longestTrack.Index)
+		fmt.Printf("  Duration: %.2f minutes\n", longestTrack.Length/60)
+		fmt.Printf("  Resolution: %dx%d\n", longestTrack.Width, longestTrack.Height)
+		fmt.Printf("  Format: %s @ %.2f fps\n", longestTrack.Format, longestTrack.FPS)
+		fmt.Printf("  Chapters: %d\n", len(longestTrack.Chapters))
+		fmt.Printf("  Audio streams: %d\n", len(longestTrack.AudioStreams))
+		fmt.Printf("  Subtitle streams: %d\n", len(longestTrack.SubtitleStreams))
+	}
+
+	// Get a specific track by index
+	track1 := dvdData.GetTrackByIndex(1)
+	if track1 != nil {
+		fmt.Printf("\nTrack 1 details:\n") 
+		fmt.Printf("  Length: %.2f minutes\n", track1.Length/60)
+		fmt.Printf("  Video: %s, %dx%d, %s\n", track1.Format, track1.Width, track1.Height, track1.Aspect)
+		
+		// Show audio streams
+		for _, audio := range track1.AudioStreams {
+			fmt.Printf("  Audio [%d]: %s (%s) - %s, %d Hz, %d ch\n",
+				audio.Index, audio.Language, audio.LanguageCode,
+				audio.Format, audio.Frequency, audio.Channels)
+		}
+		
+		// Show subtitle streams
+		for _, sub := range track1.SubtitleStreams {
+			fmt.Printf("  Subtitle [%d]: %s (%s)\n",
+				sub.Index, sub.Language, sub.LanguageCode)
+		}
+	}
+}

@@ -1,6 +1,38 @@
 # DVD Metadata Parser
 
-A Go program that parses XML files containing DVD disc metadata and extracts comprehensive information about tracks, chapters, audio streams, and subtitle streams.
+A Go library and command-line program that parses XML files containing DVD disc metadata and extracts comprehensive information about tracks, chapters, audio streams, and subtitle streams.
+
+## Library Usage
+
+The DVD parsing functionality is available as a reusable Go package:
+
+```go
+import "dvd-metadata-parser/dvd"
+
+// Parse a DVD metadata file
+dvdData, err := dvd.ParseFile("path/to/file.xml")
+if err != nil {
+    log.Fatal(err)
+}
+
+// Access DVD information
+fmt.Printf("Title: %s\n", dvdData.Title)
+fmt.Printf("Tracks: %d\n", len(dvdData.Tracks))
+fmt.Printf("Total duration: %.2f minutes\n", dvdData.GetTotalDuration()/60)
+
+// Get the longest track
+longestTrack := dvdData.GetLongestTrack()
+if longestTrack != nil {
+    fmt.Printf("Longest track: #%d (%.2f minutes)\n", 
+        longestTrack.Index, longestTrack.Length/60)
+}
+
+// Get available languages
+audioLangs := dvdData.GetAudioLanguages()
+subLangs := dvdData.GetSubtitleLanguages()
+```
+
+See [example_usage.go.example](example_usage.go.example) for a complete example.
 
 ## Features
 
@@ -85,18 +117,29 @@ Chapters (17):
   ...
 ```
 
-## Data Structure
+## Package API
 
-The program defines comprehensive Go structs to represent DVD metadata:
+The `dvd` package provides the following types and functions:
 
-### Main Structures
-- **DVD**: Root container with device info and tracks
-- **Track**: Individual title with video, audio, subtitle, and chapter data
-- **AudioStream**: Audio track details (language, format, channels, etc.)
-- **SubtitleStream**: Subtitle track information
-- **Chapter**: Chapter timing and cell references
-- **Cell**: DVD cell structure information
-- **Palette**: Color palette data
+### Types
+- **`DVD`**: Root container with device info and tracks
+- **`Track`**: Individual title with video, audio, subtitle, and chapter data
+- **`AudioStream`**: Audio track details (language, format, channels, etc.)
+- **`SubtitleStream`**: Subtitle track information
+- **`Chapter`**: Chapter timing and cell references
+- **`Cell`**: DVD cell structure information
+- **`Palette`**: Color palette data
+
+### Functions
+- **`ParseFile(filename string) (*DVD, error)`**: Parse DVD metadata from XML file
+- **`ParseBytes(data []byte) (*DVD, error)`**: Parse DVD metadata from XML byte data
+
+### Methods on DVD
+- **`GetLongestTrack() *Track`**: Returns the longest track
+- **`GetTrackByIndex(index int) *Track`**: Returns track by index (1-based)
+- **`GetTotalDuration() float64`**: Returns total duration of all tracks
+- **`GetAudioLanguages() []string`**: Returns unique audio languages
+- **`GetSubtitleLanguages() []string`**: Returns unique subtitle languages
 
 ## XML Format Support
 
@@ -141,8 +184,12 @@ The tests validate:
 
 ```
 .
-├── dvd_metadata.go      # Main program
-├── dvd_metadata_test.go # Test suite
+├── dvd/                 # DVD parsing package
+│   ├── parser.go        # Core parsing logic and types
+│   └── parser_test.go   # Package-specific tests
+├── dvd_metadata.go      # Command-line program
+├── dvd_metadata_test.go # Integration tests
+├── example_usage.go.example # Library usage example
 ├── go.mod              # Go module definition
 ├── README.md           # This documentation
 ├── source/             # Directory containing XML files

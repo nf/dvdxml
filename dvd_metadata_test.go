@@ -1,6 +1,7 @@
 package main
 
 import (
+	"dvd-metadata-parser/dvd"
 	"os"
 	"path/filepath"
 	"testing"
@@ -16,31 +17,31 @@ func TestParseDVDMetadata(t *testing.T) {
 		t.Skipf("Test file %s not found, skipping test", testFile)
 	}
 
-	dvd, err := parseDVDMetadata(testFile)
+	dvdData, err := dvd.ParseFile(testFile)
 	if err != nil {
 		t.Fatalf("Failed to parse DVD metadata: %v", err)
 	}
 
 	// Basic validation
-	if dvd == nil {
+	if dvdData == nil {
 		t.Fatal("DVD metadata is nil")
 	}
 
-	if dvd.Device == "" {
+	if dvdData.Device == "" {
 		t.Error("Device should not be empty")
 	}
 
-	if len(dvd.Tracks) == 0 {
+	if len(dvdData.Tracks) == 0 {
 		t.Error("Should have at least one track")
 	}
 
-	if dvd.LongestTrack <= 0 {
+	if dvdData.LongestTrack <= 0 {
 		t.Error("Longest track should be greater than 0")
 	}
 
 	// Validate first track has expected fields
-	if len(dvd.Tracks) > 0 {
-		track := dvd.Tracks[0]
+	if len(dvdData.Tracks) > 0 {
+		track := dvdData.Tracks[0]
 		if track.Index <= 0 {
 			t.Error("Track index should be greater than 0")
 		}
@@ -122,19 +123,19 @@ func TestParseAllXMLFiles(t *testing.T) {
 
 	successCount := 0
 	for _, xmlFile := range xmlFiles {
-		dvd, err := parseDVDMetadata(xmlFile)
+		dvdData, err := dvd.ParseFile(xmlFile)
 		if err != nil {
 			t.Errorf("Failed to parse %s: %v", xmlFile, err)
 			continue
 		}
 
 		// Basic validation
-		if dvd == nil {
+		if dvdData == nil {
 			t.Errorf("DVD metadata is nil for file %s", xmlFile)
 			continue
 		}
 
-		if len(dvd.Tracks) == 0 {
+		if len(dvdData.Tracks) == 0 {
 			t.Errorf("No tracks found in file %s", xmlFile)
 			continue
 		}
@@ -158,35 +159,35 @@ func TestSpecificFieldValues(t *testing.T) {
 		t.Skipf("Test file %s not found, skipping test", testFile)
 	}
 
-	dvd, err := parseDVDMetadata(testFile)
+	dvdData, err := dvd.ParseFile(testFile)
 	if err != nil {
 		t.Fatalf("Failed to parse DVD metadata: %v", err)
 	}
 
 	// Test known values from s1d1.xml
-	if dvd.Device != "./s1d1/Law And Order Svu" {
-		t.Errorf("Expected device './s1d1/Law And Order Svu', got '%s'", dvd.Device)
+	if dvdData.Device != "./s1d1/Law And Order Svu" {
+		t.Errorf("Expected device './s1d1/Law And Order Svu', got '%s'", dvdData.Device)
 	}
 
-	if dvd.Title != "unknown" {
-		t.Errorf("Expected title 'unknown', got '%s'", dvd.Title)
+	if dvdData.Title != "unknown" {
+		t.Errorf("Expected title 'unknown', got '%s'", dvdData.Title)
 	}
 
-	if dvd.VMGID != "DVDVIDEO-VMG" {
-		t.Errorf("Expected VMG ID 'DVDVIDEO-VMG', got '%s'", dvd.VMGID)
+	if dvdData.VMGID != "DVDVIDEO-VMG" {
+		t.Errorf("Expected VMG ID 'DVDVIDEO-VMG', got '%s'", dvdData.VMGID)
 	}
 
-	if dvd.LongestTrack != 5 {
-		t.Errorf("Expected longest track 5, got %d", dvd.LongestTrack)
+	if dvdData.LongestTrack != 5 {
+		t.Errorf("Expected longest track 5, got %d", dvdData.LongestTrack)
 	}
 
-	if len(dvd.Tracks) != 10 {
-		t.Errorf("Expected 10 tracks, got %d", len(dvd.Tracks))
+	if len(dvdData.Tracks) != 10 {
+		t.Errorf("Expected 10 tracks, got %d", len(dvdData.Tracks))
 	}
 
 	// Test first track specific values
-	if len(dvd.Tracks) > 0 {
-		track := dvd.Tracks[0]
+	if len(dvdData.Tracks) > 0 {
+		track := dvdData.Tracks[0]
 		if track.Index != 1 {
 			t.Errorf("Expected track index 1, got %d", track.Index)
 		}
@@ -214,5 +215,64 @@ func TestSpecificFieldValues(t *testing.T) {
 		if len(track.Chapters) != 5 {
 			t.Errorf("Expected 5 chapters, got %d", len(track.Chapters))
 		}
+	}
+}
+
+// TestDVDMethods tests the helper methods on the DVD struct
+func TestDVDMethods(t *testing.T) {
+	testFile := "source/s1d1.xml"
+
+	// Check if test file exists
+	if _, err := os.Stat(testFile); os.IsNotExist(err) {
+		t.Skipf("Test file %s not found, skipping test", testFile)
+	}
+
+	dvdData, err := dvd.ParseFile(testFile)
+	if err != nil {
+		t.Fatalf("Failed to parse DVD metadata: %v", err)
+	}
+
+	// Test GetLongestTrack
+	longestTrack := dvdData.GetLongestTrack()
+	if longestTrack == nil {
+		t.Error("GetLongestTrack should return a track")
+	} else {
+		if longestTrack.Index != 5 {
+			t.Errorf("Expected longest track index 5, got %d", longestTrack.Index)
+		}
+	}
+
+	// Test GetTrackByIndex
+	track1 := dvdData.GetTrackByIndex(1)
+	if track1 == nil {
+		t.Error("GetTrackByIndex(1) should return a track")
+	} else {
+		if track1.Index != 1 {
+			t.Errorf("Expected track index 1, got %d", track1.Index)
+		}
+	}
+
+	// Test with non-existent track
+	nonExistent := dvdData.GetTrackByIndex(999)
+	if nonExistent != nil {
+		t.Error("GetTrackByIndex(999) should return nil")
+	}
+
+	// Test GetTotalDuration
+	totalDuration := dvdData.GetTotalDuration()
+	if totalDuration <= 0 {
+		t.Error("GetTotalDuration should return a positive value")
+	}
+
+	// Test GetAudioLanguages
+	audioLangs := dvdData.GetAudioLanguages()
+	if len(audioLangs) == 0 {
+		t.Error("GetAudioLanguages should return at least one language")
+	}
+
+	// Test GetSubtitleLanguages
+	subLangs := dvdData.GetSubtitleLanguages()
+	if len(subLangs) == 0 {
+		t.Error("GetSubtitleLanguages should return at least one language")
 	}
 }
