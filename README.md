@@ -74,6 +74,15 @@ go run dvd_metadata.go -episodes 22 -tolerance 3 source
 go run dvd_metadata.go -episodes 90 -tolerance 15 source
 ```
 
+### Generate FFmpeg commands for episode extraction
+```bash
+# Find 40-minute episodes and generate FFmpeg commands
+go run dvd_metadata.go -episodes 40 -ffmpeg source/s1d1.xml
+
+# Generate extraction commands for sitcom episodes
+go run dvd_metadata.go -episodes 22 -tolerance 3 -ffmpeg source
+```
+
 ### View help
 ```bash
 go run dvd_metadata.go -help
@@ -150,6 +159,35 @@ Looking for content between 35.0-45.0 minutes...
 Summary: 4 tracks and 0 chapters found around 40 minutes.
 ```
 
+### FFmpeg Extraction Output
+
+With `-episodes` and `-ffmpeg` flags, the program generates ready-to-use FFmpeg commands:
+
+```
+--- FFmpeg Commands ---
+# Commands to extract episodes using dvdvideo demuxer
+# DVD Path: s1d1/Law And Order Svu
+# Note: Adjust paths as needed for your system
+
+# Episode 1 (Track 1: 41.68 minutes)
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#1' -map 0 -c copy "s1d1_episodes_track_01.mkv"
+
+# Episode 2 (Track 2: 41.00 minutes)  
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#2' -map 0 -c copy "s1d1_episodes_track_02.mkv"
+
+# Batch extraction script:
+#!/bin/bash
+# Extract all episodes
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#1' -map 0 -c copy "s1d1_episodes_track_01.mkv"
+ffmpeg -i 'dvdvideo:s1d1/Law And Order Svu#2' -map 0 -c copy "s1d1_episodes_track_02.mkv"
+```
+
+The generated commands use:
+- **`dvdvideo:` demuxer**: Directly reads from DVD structure
+- **`#N` syntax**: Specifies which DVD title/track to extract  
+- **`-c copy`**: Copies streams without re-encoding (fast, lossless)
+- **`.mkv` format**: Preserves all video, audio, and subtitle streams
+
 ## Package API
 
 The `dvd` package provides the following types and functions:
@@ -176,6 +214,16 @@ The `dvd` package provides the following types and functions:
 - **`GetSubtitleLanguages() []string`**: Returns unique subtitle languages
 - **`FindFortyMinuteContent() []ContentMatch`**: Finds tracks/chapters around 40 minutes
 - **`FindContentAroundDuration(targetMinutes, toleranceMinutes float64) []ContentMatch`**: Finds content around any duration
+
+## FFmpeg Integration
+
+The tool can generate FFmpeg commands for extracting episodes using the `dvdvideo` demuxer. This allows direct extraction from DVD folder structures without mounting or using intermediate files.
+
+**Benefits:**
+- **Stream copying**: No re-encoding (fast, lossless)
+- **All streams preserved**: Video, audio tracks, and subtitles  
+- **Direct DVD access**: Works with DVD folder structures
+- **Batch processing**: Generates shell scripts for multiple episodes
 
 ## XML Format Support
 

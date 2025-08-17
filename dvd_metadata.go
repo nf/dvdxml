@@ -88,8 +88,36 @@ func printDetailedTrackInfo(track dvd.Track) {
 	}
 }
 
+// generateFFmpegCommand generates an FFmpeg command to extract a track or chapter
+func generateFFmpegCommand(match dvd.ContentMatch, dvdPath, outputPrefix string) string {
+	if match.Type == "track" {
+		// Extract entire track using dvdvideo demuxer
+		outputFile := fmt.Sprintf("%s_track_%02d.mkv", outputPrefix, match.Track.Index)
+		// Use dvdvideo:path and specify the title (track) to extract
+		return fmt.Sprintf("ffmpeg -i 'dvdvideo:%s#%d' -map 0 -c copy %q",
+			dvdPath, match.Track.Index, outputFile)
+	} else {
+		// Extract specific chapter range - this is more complex and would need chapter timing
+		outputFile := fmt.Sprintf("%s_track_%02d_chapter_%02d.mkv",
+			outputPrefix, match.Track.Index, match.Chapter.Index)
+		// For chapters, we'd need to calculate start time and duration from chapter data
+		// This is a simplified version - real implementation would need chapter timing calculations
+		return fmt.Sprintf("# Chapter extraction requires timing calculation\n# ffmpeg -i 'dvdvideo:%s#%d' -ss START_TIME -t %.2f -map 0 -c copy %q",
+			dvdPath, match.Track.Index, match.Duration, outputFile)
+	}
+}
+
+// extractDVDPath tries to extract the DVD path from device string
+func extractDVDPath(device string) string {
+	// Remove common prefixes like "./" and get just the directory name
+	if len(device) >= 2 && device[:2] == "./" {
+		return device[2:]
+	}
+	return device
+}
+
 // findEpisodeContent finds tracks and chapters around a specified duration
-func findEpisodeContent(filename string, dvdData *dvd.DVD, targetMinutes, toleranceMinutes float64) {
+func findEpisodeContent(filename string, dvdData *dvd.DVD, targetMinutes, toleranceMinutes float64, generateFFmpeg bool) {
 	fmt.Printf("\n=== %s - ~%.0f Minute Content ===\n", filename, targetMinutes)
 	fmt.Printf("Looking for content between %.1f-%.1f minutes...\n",
 		targetMinutes-toleranceMinutes, targetMinutes+toleranceMinutes)
@@ -129,6 +157,38 @@ func findEpisodeContent(filename string, dvdData *dvd.DVD, targetMinutes, tolera
 
 	fmt.Printf("\nSummary: %d tracks and %d chapters found around %.0f minutes.\n",
 		tracksFound, chaptersFound, targetMinutes)
+
+	// Generate FFmpeg commands if requested
+	if generateFFmpeg && len(matches) > 0 {
+		dvdPath := extractDVDPath(dvdData.Device)
+		outputPrefix := fmt.Sprintf("%s_episodes", filename[:len(filename)-4]) // Remove .xml extension
+
+		fmt.Printf("\n--- FFmpeg Commands ---\n")
+		fmt.Printf("# Commands to extract episodes using dvdvideo demuxer\n")
+		fmt.Printf("# DVD Path: %s\n", dvdPath)
+		fmt.Printf("# Note: Adjust paths as needed for your system\n\n")
+
+		for i, match := range matches {
+			if match.Type == "track" {
+				cmd := generateFFmpegCommand(match, dvdPath, outputPrefix)
+				fmt.Printf("# Episode %d (Track %d: %.2f minutes)\n%s\n\n",
+					i+1, match.Track.Index, match.Duration/60, cmd)
+			} else {
+				cmd := generateFFmpegCommand(match, dvdPath, outputPrefix)
+				fmt.Printf("%s\n\n", cmd)
+			}
+		}
+
+		fmt.Printf("# Batch extraction script:\n")
+		fmt.Printf("#!/bin/bash\n")
+		fmt.Printf("# Extract all episodes\n")
+		for _, match := range matches {
+			if match.Type == "track" {
+				cmd := generateFFmpegCommand(match, dvdPath, outputPrefix)
+				fmt.Printf("%s\n", cmd)
+			}
+		}
+	}
 }
 
 func main() {
@@ -137,10 +197,9 @@ func main() {
 		detailed  = flag.Bool("detailed", false, "Show detailed info for longest track")
 		episodes  = flag.Float64("episodes", 0, "Find tracks/chapters around specified duration in minutes (e.g., 40)")
 		tolerance = flag.Float64("tolerance", 5.0, "Tolerance in minutes for episode duration matching (default: 5)")
+		ffmpeg    = flag.Bool("ffmpeg", false, "Generate FFmpeg commands to extract episodes (use with -episodes)")
 		showHelp  = flag.Bool("help", false, "Show this help message")
-	)
-
-	// Custom usage function
+	) // Custom usage function
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [flags] <source_directory>\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "       %s [flags] <xml_file>\n\n", os.Args[0])
@@ -151,6 +210,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "  %s -detailed source                   # Show detailed longest track info\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "  %s -episodes 40 source                # Find ~40 minute episodes\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "  %s -episodes 22 -tolerance 3 source   # Find ~22 minute episodes (±3 min)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s -episodes 40 -ffmpeg source        # Generate FFmpeg commands for extraction\n", os.Args[0])
 	}
 
 	// Parse command line flags
@@ -208,7 +268,7 @@ func main() {
 		}
 
 		if *episodes > 0 {
-			findEpisodeContent(filepath.Base(xmlFile), dvdData, *episodes, *tolerance)
+			findEpisodeContent(filepath.Base(xmlFile), dvdData, *episodes, *tolerance, *ffmpeg)
 		} else {
 			printDVDSummary(filepath.Base(xmlFile), dvdData)
 

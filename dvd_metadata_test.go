@@ -4,6 +4,7 @@ import (
 	"dvd-metadata-parser/dvd"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -381,5 +382,66 @@ func TestFindEpisodeContentFunction(t *testing.T) {
 			t.Errorf("Expected no matches for %s, got %d", tc.description, len(matches))
 		}
 		t.Logf("%s: found %d matches", tc.description, len(matches))
+	}
+}
+
+// TestFFmpegCommandGeneration tests the FFmpeg command generation
+func TestFFmpegCommandGeneration(t *testing.T) {
+	testFile := "source/s1d1.xml"
+
+	// Check if test file exists
+	if _, err := os.Stat(testFile); os.IsNotExist(err) {
+		t.Skipf("Test file %s not found, skipping test", testFile)
+	}
+
+	dvdData, err := dvd.ParseFile(testFile)
+	if err != nil {
+		t.Fatalf("Failed to parse DVD metadata: %v", err)
+	}
+
+	// Test generateFFmpegCommand function
+	matches := dvdData.FindContentAroundDuration(164.0, 10.0) // Should find the long track
+	if len(matches) == 0 {
+		t.Skip("No matches found for test")
+	}
+
+	match := matches[0]
+	dvdPath := extractDVDPath(dvdData.Device)
+	cmd := generateFFmpegCommand(match, dvdPath, "test_episodes")
+
+	// Validate the command contains expected elements
+	if !strings.Contains(cmd, "ffmpeg") {
+		t.Error("Command should contain 'ffmpeg'")
+	}
+	if !strings.Contains(cmd, "dvdvideo:") {
+		t.Error("Command should contain 'dvdvideo:'")
+	}
+	if !strings.Contains(cmd, "-c copy") {
+		t.Error("Command should contain '-c copy' for stream copying")
+	}
+	if !strings.Contains(cmd, ".mkv") {
+		t.Error("Command should output to .mkv file")
+	}
+
+	t.Logf("Generated FFmpeg command: %s", cmd)
+}
+
+// TestExtractDVDPath tests DVD path extraction from device strings
+func TestExtractDVDPath(t *testing.T) {
+	testCases := []struct {
+		device   string
+		expected string
+	}{
+		{"./s1d1/Law And Order Svu", "s1d1/Law And Order Svu"},
+		{"s2d1/Some Movie", "s2d1/Some Movie"},
+		{"/path/to/dvd", "/path/to/dvd"},
+		{"./", ""},
+	}
+
+	for _, tc := range testCases {
+		result := extractDVDPath(tc.device)
+		if result != tc.expected {
+			t.Errorf("extractDVDPath(%q) = %q, expected %q", tc.device, result, tc.expected)
+		}
 	}
 }
