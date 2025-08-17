@@ -87,15 +87,67 @@ func printDetailedTrackInfo(track dvd.Track) {
 	}
 }
 
+// findFortyMinuteContent finds tracks and chapters that are around 40 minutes long
+func findFortyMinuteContent(filename string, dvdData *dvd.DVD) {
+	fmt.Printf("\n=== %s - ~40 Minute Content ===\n", filename)
+	fmt.Printf("Looking for content between 35.0-45.0 minutes...\n")
+
+	matches := dvdData.FindFortyMinuteContent()
+
+	if len(matches) == 0 {
+		fmt.Printf("  No tracks or chapters found around 40 minutes.\n")
+		return
+	}
+
+	tracksFound := 0
+	chaptersFound := 0
+	currentTrack := -1
+
+	for _, match := range matches {
+		if match.Type == "track" {
+			tracksFound++
+			fmt.Printf("\n  ✓ Track %d: %.2f minutes (%.2f seconds)\n",
+				match.Track.Index, match.Duration/60, match.Duration)
+			fmt.Printf("    Resolution: %dx%d, Format: %s @ %.2f fps\n",
+				match.Track.Width, match.Track.Height, match.Track.Format, match.Track.FPS)
+			fmt.Printf("    Audio: %d streams, Subtitles: %d streams, Chapters: %d\n",
+				len(match.Track.AudioStreams), len(match.Track.SubtitleStreams), len(match.Track.Chapters))
+		} else if match.Type == "chapter" {
+			chaptersFound++
+			if match.Track.Index != currentTrack {
+				currentTrack = match.Track.Index
+				fmt.Printf("\n  Track %d chapters:\n", match.Track.Index)
+				fmt.Printf("    Track length: %.2f minutes, Resolution: %dx%d\n",
+					match.Track.Length/60, match.Track.Width, match.Track.Height)
+			}
+			fmt.Printf("    ✓ Chapter %d: %.2f minutes (%.2f seconds)\n",
+				match.Chapter.Index, match.Duration/60, match.Duration)
+		}
+	}
+
+	fmt.Printf("\nSummary: %d tracks and %d chapters found around 40 minutes.\n",
+		tracksFound, chaptersFound)
+}
+
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run dvd_metadata.go <source_directory> [--detailed]")
-		fmt.Println("       go run dvd_metadata.go <xml_file> [--detailed]")
+		fmt.Println("Usage: go run dvd_metadata.go <source_directory> [mode]")
+		fmt.Println("       go run dvd_metadata.go <xml_file> [mode]")
+		fmt.Println("")
+		fmt.Println("Modes:")
+		fmt.Println("  --detailed       Show detailed info for longest track")
+		fmt.Println("  --forty-minutes  Find tracks/chapters around 40 minutes long")
 		os.Exit(1)
 	}
 
 	sourcePath := os.Args[1]
-	detailed := len(os.Args) > 2 && os.Args[2] == "--detailed"
+	mode := ""
+	if len(os.Args) > 2 {
+		mode = os.Args[2]
+	}
+
+	detailed := mode == "--detailed"
+	fortyMinutes := mode == "--forty-minutes"
 
 	// Check if the argument is a directory or a file
 	info, err := os.Stat(sourcePath)
@@ -133,13 +185,17 @@ func main() {
 			continue
 		}
 
-		printDVDSummary(filepath.Base(xmlFile), dvdData)
+		if fortyMinutes {
+			findFortyMinuteContent(filepath.Base(xmlFile), dvdData)
+		} else {
+			printDVDSummary(filepath.Base(xmlFile), dvdData)
 
-		// If detailed mode is enabled, show detailed info for the longest track
-		if detailed {
-			longestTrack := dvdData.GetLongestTrack()
-			if longestTrack != nil {
-				printDetailedTrackInfo(*longestTrack)
+			// If detailed mode is enabled, show detailed info for the longest track
+			if detailed {
+				longestTrack := dvdData.GetLongestTrack()
+				if longestTrack != nil {
+					printDetailedTrackInfo(*longestTrack)
+				}
 			}
 		}
 	}

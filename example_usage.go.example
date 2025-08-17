@@ -61,3 +61,33 @@ func main() {
 		}
 	}
 }
+
+	// Find content around 40 minutes (useful for TV episodes)
+	fortyMinMatches := dvdData.FindFortyMinuteContent()
+	if len(fortyMinMatches) > 0 {
+		fmt.Printf("\nContent around 40 minutes:\n")
+		for _, match := range fortyMinMatches {
+			if match.Type == "track" {
+				fmt.Printf("  Track %d: %.2f minutes\n", 
+					match.Track.Index, match.Duration/60)
+			} else {
+				fmt.Printf("  Track %d, Chapter %d: %.2f minutes\n", 
+					match.Track.Index, match.Chapter.Index, match.Duration/60)
+			}
+		}
+	}
+
+	// Find custom duration content (e.g., looking for 20-30 minute content)
+	customMatches := dvdData.FindContentAroundDuration(25.0, 5.0) // 25 ± 5 minutes
+	if len(customMatches) > 0 {
+		fmt.Printf("\nContent around 20-30 minutes:\n")
+		for _, match := range customMatches {
+			if match.Type == "track" {
+				fmt.Printf("  Track %d: %.2f minutes\n", 
+					match.Track.Index, match.Duration/60)
+			} else {
+				fmt.Printf("  Track %d, Chapter %d: %.2f minutes\n", 
+					match.Track.Index, match.Chapter.Index, match.Duration/60)
+			}
+		}
+	}

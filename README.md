@@ -65,6 +65,12 @@ go run dvd_metadata.go <path> --detailed
 go run dvd_metadata.go source/s1d1.xml --detailed
 ```
 
+### Find content around 40 minutes (useful for TV episodes)
+```bash
+go run dvd_metadata.go <path> --forty-minutes
+go run dvd_metadata.go source --forty-minutes
+```
+
 ## Output Format
 
 The program provides a structured summary for each DVD:
@@ -117,6 +123,25 @@ Chapters (17):
   ...
 ```
 
+### Forty Minutes Mode Output
+
+With `--forty-minutes` flag, the program finds tracks and chapters around 40 minutes:
+
+```
+=== s1d1.xml - ~40 Minute Content ===
+Looking for content between 35.0-45.0 minutes...
+
+  ✓ Track 1: 41.68 minutes (2500.56 seconds)
+    Resolution: 720x576, Format: PAL @ 25.00 fps
+    Audio: 2 streams, Subtitles: 4 streams, Chapters: 5
+
+  ✓ Track 2: 41.00 minutes (2459.88 seconds)
+    Resolution: 720x576, Format: PAL @ 25.00 fps
+    Audio: 2 streams, Subtitles: 4 streams, Chapters: 5
+
+Summary: 4 tracks and 0 chapters found around 40 minutes.
+```
+
 ## Package API
 
 The `dvd` package provides the following types and functions:
@@ -129,6 +154,7 @@ The `dvd` package provides the following types and functions:
 - **`Chapter`**: Chapter timing and cell references
 - **`Cell`**: DVD cell structure information
 - **`Palette`**: Color palette data
+- **`ContentMatch`**: Represents a track or chapter that matches duration criteria
 
 ### Functions
 - **`ParseFile(filename string) (*DVD, error)`**: Parse DVD metadata from XML file
@@ -140,6 +166,8 @@ The `dvd` package provides the following types and functions:
 - **`GetTotalDuration() float64`**: Returns total duration of all tracks
 - **`GetAudioLanguages() []string`**: Returns unique audio languages
 - **`GetSubtitleLanguages() []string`**: Returns unique subtitle languages
+- **`FindFortyMinuteContent() []ContentMatch`**: Finds tracks/chapters around 40 minutes
+- **`FindContentAroundDuration(targetMinutes, toleranceMinutes float64) []ContentMatch`**: Finds content around any duration
 
 ## XML Format Support
 

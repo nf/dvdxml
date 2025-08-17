@@ -170,3 +170,54 @@ func (d *DVD) GetSubtitleLanguages() []string {
 	}
 	return languages
 }
+
+// ContentMatch represents a track or chapter that matches certain criteria
+type ContentMatch struct {
+	Type     string   // "track" or "chapter"
+	Track    *Track   // The track containing this content
+	Chapter  *Chapter // The chapter (nil if Type is "track")
+	Duration float64  // Duration in seconds
+}
+
+// FindContentAroundDuration finds tracks and chapters with duration around the target
+func (d *DVD) FindContentAroundDuration(targetMinutes, toleranceMinutes float64) []ContentMatch {
+	targetSeconds := targetMinutes * 60.0
+	toleranceSeconds := toleranceMinutes * 60.0
+
+	var matches []ContentMatch
+
+	for i := range d.Tracks {
+		track := &d.Tracks[i]
+
+		// Check if the entire track matches
+		if track.Length >= (targetSeconds-toleranceSeconds) && track.Length <= (targetSeconds+toleranceSeconds) {
+			matches = append(matches, ContentMatch{
+				Type:     "track",
+				Track:    track,
+				Chapter:  nil,
+				Duration: track.Length,
+			})
+			continue // Don't check chapters if the whole track matches
+		}
+
+		// Check chapters within this track
+		for j := range track.Chapters {
+			chapter := &track.Chapters[j]
+			if chapter.Length >= (targetSeconds-toleranceSeconds) && chapter.Length <= (targetSeconds+toleranceSeconds) {
+				matches = append(matches, ContentMatch{
+					Type:     "chapter",
+					Track:    track,
+					Chapter:  chapter,
+					Duration: chapter.Length,
+				})
+			}
+		}
+	}
+
+	return matches
+}
+
+// FindFortyMinuteContent is a convenience method to find content around 40 minutes
+func (d *DVD) FindFortyMinuteContent() []ContentMatch {
+	return d.FindContentAroundDuration(40.0, 5.0)
+}

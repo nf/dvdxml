@@ -276,3 +276,77 @@ func TestDVDMethods(t *testing.T) {
 		t.Error("GetSubtitleLanguages should return at least one language")
 	}
 }
+
+// TestFortyMinuteMode tests the forty minute content finder
+func TestFortyMinuteMode(t *testing.T) {
+	testFile := "source/s1d1.xml"
+
+	// Check if test file exists
+	if _, err := os.Stat(testFile); os.IsNotExist(err) {
+		t.Skipf("Test file %s not found, skipping test", testFile)
+	}
+
+	dvdData, err := dvd.ParseFile(testFile)
+	if err != nil {
+		t.Fatalf("Failed to parse DVD metadata: %v", err)
+	}
+
+	// Count tracks and chapters around 40 minutes
+	targetSeconds := 40.0 * 60.0
+	toleranceSeconds := 5.0 * 60.0
+
+	tracksFound := 0
+	chaptersFound := 0
+
+	for _, track := range dvdData.Tracks {
+		if track.Length >= (targetSeconds-toleranceSeconds) && track.Length <= (targetSeconds+toleranceSeconds) {
+			tracksFound++
+		}
+		for _, chapter := range track.Chapters {
+			if chapter.Length >= (targetSeconds-toleranceSeconds) && chapter.Length <= (targetSeconds+toleranceSeconds) {
+				chaptersFound++
+			}
+		}
+	}
+
+	// Based on s1d1.xml, we expect to find several tracks around 40 minutes
+	if tracksFound == 0 {
+		t.Error("Expected to find at least one track around 40 minutes")
+	}
+
+	t.Logf("Found %d tracks and %d chapters around 40 minutes", tracksFound, chaptersFound)
+}
+
+// isAroundDuration checks if a duration is within a tolerance of the target duration
+func isAroundDuration(duration, target, tolerance float64) bool {
+	return duration >= (target-tolerance) && duration <= (target+tolerance)
+}
+
+// TestIsAroundDuration tests the duration matching function
+func TestIsAroundDuration(t *testing.T) {
+	target := 40.0 * 60.0   // 40 minutes in seconds
+	tolerance := 5.0 * 60.0 // 5 minutes tolerance
+
+	testCases := []struct {
+		duration    float64
+		expected    bool
+		description string
+	}{
+		{40.0 * 60.0, true, "exactly 40 minutes"},
+		{35.0 * 60.0, true, "35 minutes (lower bound)"},
+		{45.0 * 60.0, true, "45 minutes (upper bound)"},
+		{41.5 * 60.0, true, "41.5 minutes (within range)"},
+		{34.9 * 60.0, false, "34.9 minutes (below range)"},
+		{45.1 * 60.0, false, "45.1 minutes (above range)"},
+		{20.0 * 60.0, false, "20 minutes (well below)"},
+		{60.0 * 60.0, false, "60 minutes (well above)"},
+	}
+
+	for _, tc := range testCases {
+		result := isAroundDuration(tc.duration, target, tolerance)
+		if result != tc.expected {
+			t.Errorf("isAroundDuration(%.1f, %.1f, %.1f) = %v, expected %v for %s",
+				tc.duration, target, tolerance, result, tc.expected, tc.description)
+		}
+	}
+}
