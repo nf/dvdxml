@@ -94,16 +94,14 @@ func generateFFmpegCommand(match dvd.ContentMatch, dvdPath, outputPrefix string)
 		// Extract entire track using dvdvideo demuxer
 		outputFile := fmt.Sprintf("%s_track_%02d.mkv", outputPrefix, match.Track.Index)
 		// Use dvdvideo:path and specify the title (track) to extract
-		return fmt.Sprintf("ffmpeg -i 'dvdvideo:%s#%d' -map 0 -c copy %q",
+		return fmt.Sprintf("ffmpeg -f dvdvideo -i '%s' -title %d -map 0 -c copy %q",
 			dvdPath, match.Track.Index, outputFile)
 	} else {
 		// Extract specific chapter range - this is more complex and would need chapter timing
 		outputFile := fmt.Sprintf("%s_track_%02d_chapter_%02d.mkv",
 			outputPrefix, match.Track.Index, match.Chapter.Index)
-		// For chapters, we'd need to calculate start time and duration from chapter data
-		// This is a simplified version - real implementation would need chapter timing calculations
-		return fmt.Sprintf("# Chapter extraction requires timing calculation\n# ffmpeg -i 'dvdvideo:%s#%d' -ss START_TIME -t %.2f -map 0 -c copy %q",
-			dvdPath, match.Track.Index, match.Duration, outputFile)
+		return fmt.Sprintf("ffmpeg -f dvdvideo -i '%s' -title %d -chapter_start %d -chapter_end %d -map 0 -c copy %q",
+			dvdPath, match.Track.Index, match.Chapter.Index, match.Chapter.Index+1, outputFile)
 	}
 }
 
