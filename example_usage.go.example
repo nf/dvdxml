@@ -77,11 +77,11 @@ func main() {
 		}
 	}
 
-	// Find custom duration content (e.g., looking for 20-30 minute content)
-	customMatches := dvdData.FindContentAroundDuration(25.0, 5.0) // 25 ± 5 minutes
-	if len(customMatches) > 0 {
-		fmt.Printf("\nContent around 20-30 minutes:\n")
-		for _, match := range customMatches {
+	// Example: Find sitcom episodes (around 22 minutes)
+	sitcomMatches := dvdData.FindContentAroundDuration(22.0, 3.0)
+	if len(sitcomMatches) > 0 {
+		fmt.Printf("\nSitcom episodes (around 22 minutes):\n")
+		for _, match := range sitcomMatches {
 			if match.Type == "track" {
 				fmt.Printf("  Track %d: %.2f minutes\n", 
 					match.Track.Index, match.Duration/60)
@@ -91,3 +91,5 @@ func main() {
 			}
 		}
 	}
+
+

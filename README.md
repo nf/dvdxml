@@ -47,28 +47,36 @@ See [example_usage.go.example](example_usage.go.example) for a complete example.
 
 ## Usage
 
-### Process a single XML file
+### Basic usage
 ```bash
 go run dvd_metadata.go <xml_file>
 go run dvd_metadata.go source/s1d1.xml
-```
 
-### Process all XML files in a directory
-```bash
 go run dvd_metadata.go <directory>
 go run dvd_metadata.go source
 ```
 
-### Enable detailed mode for extended information
+### Show detailed information for the longest track
 ```bash
-go run dvd_metadata.go <path> --detailed
-go run dvd_metadata.go source/s1d1.xml --detailed
+go run dvd_metadata.go -detailed source/s1d1.xml
+go run dvd_metadata.go -detailed source
 ```
 
-### Find content around 40 minutes (useful for TV episodes)
+### Find episodes of specific duration
 ```bash
-go run dvd_metadata.go <path> --forty-minutes
-go run dvd_metadata.go source --forty-minutes
+# Find content around 40 minutes (±5 minutes by default)
+go run dvd_metadata.go -episodes 40 source
+
+# Find content around 22 minutes with custom tolerance
+go run dvd_metadata.go -episodes 22 -tolerance 3 source
+
+# Find movie-length content
+go run dvd_metadata.go -episodes 90 -tolerance 15 source
+```
+
+### View help
+```bash
+go run dvd_metadata.go -help
 ```
 
 ## Output Format
@@ -123,9 +131,9 @@ Chapters (17):
   ...
 ```
 
-### Forty Minutes Mode Output
+### Episodes Mode Output
 
-With `--forty-minutes` flag, the program finds tracks and chapters around 40 minutes:
+With `-episodes` flag, the program finds tracks and chapters around the specified duration:
 
 ```
 === s1d1.xml - ~40 Minute Content ===

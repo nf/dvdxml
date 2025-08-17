@@ -277,8 +277,8 @@ func TestDVDMethods(t *testing.T) {
 	}
 }
 
-// TestFortyMinuteMode tests the forty minute content finder
-func TestFortyMinuteMode(t *testing.T) {
+// TestEpisodeMode tests the episode content finder
+func TestEpisodeMode(t *testing.T) {
 	testFile := "source/s1d1.xml"
 
 	// Check if test file exists
@@ -291,21 +291,17 @@ func TestFortyMinuteMode(t *testing.T) {
 		t.Fatalf("Failed to parse DVD metadata: %v", err)
 	}
 
-	// Count tracks and chapters around 40 minutes
-	targetSeconds := 40.0 * 60.0
-	toleranceSeconds := 5.0 * 60.0
+	// Test the package method directly
+	matches := dvdData.FindContentAroundDuration(40.0, 5.0)
 
 	tracksFound := 0
 	chaptersFound := 0
 
-	for _, track := range dvdData.Tracks {
-		if track.Length >= (targetSeconds-toleranceSeconds) && track.Length <= (targetSeconds+toleranceSeconds) {
+	for _, match := range matches {
+		if match.Type == "track" {
 			tracksFound++
-		}
-		for _, chapter := range track.Chapters {
-			if chapter.Length >= (targetSeconds-toleranceSeconds) && chapter.Length <= (targetSeconds+toleranceSeconds) {
-				chaptersFound++
-			}
+		} else if match.Type == "chapter" {
+			chaptersFound++
 		}
 	}
 
@@ -348,5 +344,42 @@ func TestIsAroundDuration(t *testing.T) {
 			t.Errorf("isAroundDuration(%.1f, %.1f, %.1f) = %v, expected %v for %s",
 				tc.duration, target, tolerance, result, tc.expected, tc.description)
 		}
+	}
+}
+
+// TestFindEpisodeContentFunction tests the findEpisodeContent function behavior
+func TestFindEpisodeContentFunction(t *testing.T) {
+	testFile := "source/s1d1.xml"
+
+	// Check if test file exists
+	if _, err := os.Stat(testFile); os.IsNotExist(err) {
+		t.Skipf("Test file %s not found, skipping test", testFile)
+	}
+
+	dvdData, err := dvd.ParseFile(testFile)
+	if err != nil {
+		t.Fatalf("Failed to parse DVD metadata: %v", err)
+	}
+
+	// Test with different durations
+	testCases := []struct {
+		targetMinutes    float64
+		toleranceMinutes float64
+		expectedMatches  int // approximate expected matches
+		description      string
+	}{
+		{40.0, 5.0, 4, "40 minute episodes"}, // Should find several tracks
+		{20.0, 2.0, 0, "20 minute episodes"}, // Should find none
+		{164.0, 10.0, 1, "long content"},     // Should find the longest track
+	}
+
+	for _, tc := range testCases {
+		matches := dvdData.FindContentAroundDuration(tc.targetMinutes, tc.toleranceMinutes)
+		if tc.expectedMatches > 0 && len(matches) == 0 {
+			t.Errorf("Expected to find matches for %s, got 0", tc.description)
+		} else if tc.expectedMatches == 0 && len(matches) > 0 {
+			t.Errorf("Expected no matches for %s, got %d", tc.description, len(matches))
+		}
+		t.Logf("%s: found %d matches", tc.description, len(matches))
 	}
 }

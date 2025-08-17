@@ -2,6 +2,7 @@ package main
 
 import (
 	"dvd-metadata-parser/dvd"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -87,15 +88,16 @@ func printDetailedTrackInfo(track dvd.Track) {
 	}
 }
 
-// findFortyMinuteContent finds tracks and chapters that are around 40 minutes long
-func findFortyMinuteContent(filename string, dvdData *dvd.DVD) {
-	fmt.Printf("\n=== %s - ~40 Minute Content ===\n", filename)
-	fmt.Printf("Looking for content between 35.0-45.0 minutes...\n")
+// findEpisodeContent finds tracks and chapters around a specified duration
+func findEpisodeContent(filename string, dvdData *dvd.DVD, targetMinutes, toleranceMinutes float64) {
+	fmt.Printf("\n=== %s - ~%.0f Minute Content ===\n", filename, targetMinutes)
+	fmt.Printf("Looking for content between %.1f-%.1f minutes...\n",
+		targetMinutes-toleranceMinutes, targetMinutes+toleranceMinutes)
 
-	matches := dvdData.FindFortyMinuteContent()
+	matches := dvdData.FindContentAroundDuration(targetMinutes, toleranceMinutes)
 
 	if len(matches) == 0 {
-		fmt.Printf("  No tracks or chapters found around 40 minutes.\n")
+		fmt.Printf("  No tracks or chapters found around %.0f minutes.\n", targetMinutes)
 		return
 	}
 
@@ -125,29 +127,49 @@ func findFortyMinuteContent(filename string, dvdData *dvd.DVD) {
 		}
 	}
 
-	fmt.Printf("\nSummary: %d tracks and %d chapters found around 40 minutes.\n",
-		tracksFound, chaptersFound)
+	fmt.Printf("\nSummary: %d tracks and %d chapters found around %.0f minutes.\n",
+		tracksFound, chaptersFound, targetMinutes)
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run dvd_metadata.go <source_directory> [mode]")
-		fmt.Println("       go run dvd_metadata.go <xml_file> [mode]")
-		fmt.Println("")
-		fmt.Println("Modes:")
-		fmt.Println("  --detailed       Show detailed info for longest track")
-		fmt.Println("  --forty-minutes  Find tracks/chapters around 40 minutes long")
+	// Define command line flags
+	var (
+		detailed  = flag.Bool("detailed", false, "Show detailed info for longest track")
+		episodes  = flag.Float64("episodes", 0, "Find tracks/chapters around specified duration in minutes (e.g., 40)")
+		tolerance = flag.Float64("tolerance", 5.0, "Tolerance in minutes for episode duration matching (default: 5)")
+		showHelp  = flag.Bool("help", false, "Show this help message")
+	)
+
+	// Custom usage function
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s [flags] <source_directory>\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "       %s [flags] <xml_file>\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Flags:\n")
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "\nExamples:\n")
+		fmt.Fprintf(os.Stderr, "  %s source/s1d1.xml                    # Basic summary\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s -detailed source                   # Show detailed longest track info\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s -episodes 40 source                # Find ~40 minute episodes\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s -episodes 22 -tolerance 3 source   # Find ~22 minute episodes (±3 min)\n", os.Args[0])
+	}
+
+	// Parse command line flags
+	flag.Parse()
+
+	// Show help if requested
+	if *showHelp {
+		flag.Usage()
+		os.Exit(0)
+	}
+
+	// Check for required source path argument
+	if flag.NArg() != 1 {
+		fmt.Fprintf(os.Stderr, "Error: Please specify exactly one source directory or XML file\n\n")
+		flag.Usage()
 		os.Exit(1)
 	}
 
-	sourcePath := os.Args[1]
-	mode := ""
-	if len(os.Args) > 2 {
-		mode = os.Args[2]
-	}
-
-	detailed := mode == "--detailed"
-	fortyMinutes := mode == "--forty-minutes"
+	sourcePath := flag.Arg(0)
 
 	// Check if the argument is a directory or a file
 	info, err := os.Stat(sourcePath)
@@ -185,13 +207,13 @@ func main() {
 			continue
 		}
 
-		if fortyMinutes {
-			findFortyMinuteContent(filepath.Base(xmlFile), dvdData)
+		if *episodes > 0 {
+			findEpisodeContent(filepath.Base(xmlFile), dvdData, *episodes, *tolerance)
 		} else {
 			printDVDSummary(filepath.Base(xmlFile), dvdData)
 
 			// If detailed mode is enabled, show detailed info for the longest track
-			if detailed {
+			if *detailed {
 				longestTrack := dvdData.GetLongestTrack()
 				if longestTrack != nil {
 					printDetailedTrackInfo(*longestTrack)
