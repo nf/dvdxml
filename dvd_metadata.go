@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 // DVD represents the complete DVD metadata structure
@@ -90,14 +90,13 @@ func parseDVDMetadata(filename string) (*DVD, error) {
 	}
 
 	// Fix common XML entity issues in the data
-	content := string(data)
 	// Fix malformed entity &Scan -> &amp;Scan
-	content = strings.ReplaceAll(content, "Pan&Scan", "Pan&amp;Scan")
+	data = bytes.ReplaceAll(data, []byte("Pan&Scan"), []byte("Pan&amp;Scan"))
 	// Fix other potential malformed entities
-	content = strings.ReplaceAll(content, "&Letterbox", "&amp;Letterbox")
+	data = bytes.ReplaceAll(data, []byte("&Letterbox"), []byte("&amp;Letterbox"))
 
 	var dvd DVD
-	err = xml.Unmarshal([]byte(content), &dvd)
+	err = xml.Unmarshal(data, &dvd)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse XML in file %s: %v", filename, err)
 	}
