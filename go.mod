@@ -1,3 +1,3 @@
-module github.com/nf/dvdxml
+module dvd-metadata-parser
 
-go 1.24.3
+go 1.21

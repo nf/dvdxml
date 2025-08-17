@@ -1,0 +1,1542 @@
+Found 24 XML files to process
+
+=== s1d1.xml ===
+Device: ./s1d1/Law And Order Svu
+Title: unknown
+Provider ID: 
+Number of tracks: 10
+Longest track: 5
+
+  Track 1:
+    Length: 2500.56 seconds (41.68 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 2:
+    Length: 2459.88 seconds (41.00 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 3:
+    Length: 2457.64 seconds (40.96 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 4:
+    Length: 2442.20 seconds (40.70 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 5:
+    Length: 9857.28 seconds (164.29 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  ... and 5 more tracks
+
+=== s1d2.xml ===
+Device: ./s1d2/Law And Order Svu
+Title: unknown
+Provider ID: 
+Number of tracks: 10
+Longest track: 5
+
+  Track 1:
+    Length: 2541.36 seconds (42.36 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 2:
+    Length: 2488.76 seconds (41.48 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 3:
+    Length: 2541.00 seconds (42.35 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 4:
+    Length: 2528.60 seconds (42.14 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 5:
+    Length: 10096.72 seconds (168.28 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  ... and 5 more tracks
+
+=== s1d3.xml ===
+Device: ./s1d3/Law And Order Svu
+Title: unknown
+Provider ID: 
+Number of tracks: 10
+Longest track: 5
+
+  Track 1:
+    Length: 2540.52 seconds (42.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 2:
+    Length: 2564.92 seconds (42.75 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 3:
+    Length: 2544.68 seconds (42.41 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 4:
+    Length: 2515.00 seconds (41.92 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 5:
+    Length: 10162.12 seconds (169.37 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  ... and 5 more tracks
+
+=== s1d4.xml ===
+Device: ./s1d4/Law And Order Svu
+Title: unknown
+Provider ID: 
+Number of tracks: 10
+Longest track: 5
+
+  Track 1:
+    Length: 2520.04 seconds (42.00 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 2:
+    Length: 2525.40 seconds (42.09 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 3:
+    Length: 2516.40 seconds (41.94 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 4:
+    Length: 2537.00 seconds (42.28 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 5:
+    Length: 10095.84 seconds (168.26 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  ... and 5 more tracks
+
+=== s1d5.xml ===
+Device: ./s1d5/Law And Order Svu
+Title: unknown
+Provider ID: 
+Number of tracks: 10
+Longest track: 5
+
+  Track 1:
+    Length: 2537.24 seconds (42.29 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 2:
+    Length: 2492.48 seconds (41.54 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 3:
+    Length: 2417.48 seconds (40.29 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 4:
+    Length: 2513.00 seconds (41.88 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  Track 5:
+    Length: 9957.20 seconds (165.95 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 2
+    Subtitle streams: 4
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+      Audio 2: Francais (fr) - ac3, 48000 Hz, 2 channels
+      Subtitle 1: English (en)
+      Subtitle 2: Francais (fr)
+      Subtitle 3: Nederlands (nl)
+      ... and 1 more subtitle streams
+
+  ... and 5 more tracks
+
+=== s2d1.xml ===
+Device: ./s2d1/Law And Order Svu Disc 01
+Title: unknown
+Provider ID: LAW_AND_ORDER_SVU_DISC_01
+Number of tracks: 10
+Longest track: 6
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2526.88 seconds (42.11 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 6
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 5 more tracks
+
+=== s2d2.xml ===
+Device: ./s2d2/Law And Order Svu Disc 02
+Title: unknown
+Provider ID: LAW_AND_ORDER_SVU_DISC_02
+Number of tracks: 10
+Longest track: 6
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2450.12 seconds (40.84 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 6
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 5 more tracks
+
+=== s2d3.xml ===
+Device: ./s2d3/Law And Order Svu Disc 03
+Title: unknown
+Provider ID: LAW_AND_ORDER_SVU_DISC_03
+Number of tracks: 10
+Longest track: 8
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2491.96 seconds (41.53 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 6
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 5 more tracks
+
+=== s2d4.xml ===
+Device: ./s2d4/Law And Order Svu Disc 04
+Title: unknown
+Provider ID: LAW__ORDER_SVU_DISC_04
+Number of tracks: 9
+Longest track: 5
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2545.92 seconds (42.43 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 6
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 4 more tracks
+
+=== s2d5.xml ===
+Device: ./s2d5/Law And Order Svu Disc 05
+Title: unknown
+Provider ID: LAW__ORDER_SVU_DISC_05
+Number of tracks: 9
+Longest track: 6
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2441.80 seconds (40.70 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 6
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 4 more tracks
+
+=== s2d6.xml ===
+Device: ./s2d6/Law And Order Svu Disc 06
+Title: unknown
+Provider ID: LAW__ORDER_SVU_DISC_06
+Number of tracks: 9
+Longest track: 6
+
+  Track 1:
+    Length: 20.44 seconds (0.34 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 12.84 seconds (0.21 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 0.60 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2528.36 seconds (42.14 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 4 more tracks
+
+=== s3d1.xml ===
+Device: ./s3d1/Law And Order Svu S3 Disc 1
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9980.04 seconds (166.33 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2488.92 seconds (41.48 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2475.32 seconds (41.26 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2490.72 seconds (41.51 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s3d2.xml ===
+Device: ./s3d2/Law And Order Svu S3 Disc 2
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9992.80 seconds (166.55 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2523.52 seconds (42.06 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2547.52 seconds (42.46 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2435.52 seconds (40.59 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s3d3.xml ===
+Device: ./s3d3/Law And Order Svu S3 Disc 3
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 10001.64 seconds (166.69 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2450.52 seconds (40.84 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2497.52 seconds (41.63 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2529.52 seconds (42.16 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s3d4.xml ===
+Device: ./s3d4/Law And Order Svu S3 Disc 4
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9880.64 seconds (164.68 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2475.52 seconds (41.26 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2503.52 seconds (41.73 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2440.52 seconds (40.68 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s3d5.xml ===
+Device: ./s3d5/Law And Order Svu S3 Disc 5
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9973.64 seconds (166.23 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2460.52 seconds (41.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2518.52 seconds (41.98 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2455.52 seconds (40.93 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s3d6.xml ===
+Device: ./s3d6/Law And Order Svu S3 Disc 6
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 7457.60 seconds (124.29 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 19
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2494.52 seconds (41.58 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2428.52 seconds (40.48 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2535.52 seconds (42.26 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d1.xml ===
+Device: ./s4d1/Law And Order Svu S4 Disc 1
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 12355.68 seconds (205.93 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 31
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2451.92 seconds (40.87 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2505.32 seconds (41.76 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2461.52 seconds (41.03 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d2.xml ===
+Device: ./s4d2/Law And Order Svu S4 Disc 2
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9899.04 seconds (164.98 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2534.12 seconds (42.24 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2443.12 seconds (40.72 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2508.72 seconds (41.81 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d3.xml ===
+Device: ./s4d3/Law And Order Svu S4 Disc 3
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9715.04 seconds (161.92 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2482.72 seconds (41.38 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2463.12 seconds (41.05 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2369.92 seconds (39.50 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d4.xml ===
+Device: ./s4d4/Law And Order Svu S4 Disc 4
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9866.84 seconds (164.45 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2466.92 seconds (41.12 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2455.92 seconds (40.93 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2459.92 seconds (41.00 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d5.xml ===
+Device: ./s4d5/Law And Order Svu S4 Disc 5
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9838.04 seconds (163.97 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2485.32 seconds (41.42 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2448.72 seconds (40.81 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2447.12 seconds (40.79 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s4d6.xml ===
+Device: ./s4d6/Law And Order Svu S4 Disc 6
+Title: unknown
+Provider ID: 
+Number of tracks: 20
+Longest track: 2
+
+  Track 1:
+    Length: 0.48 seconds (0.01 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 1
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 9786.44 seconds (163.11 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 25
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 2403.12 seconds (40.05 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2458.92 seconds (40.98 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2485.72 seconds (41.43 minutes)
+    Resolution: 720x576
+    Aspect: 4/3
+    Format: PAL @ 25.00 fps
+    Chapters: 7
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 15 more tracks
+
+=== s5d1.xml ===
+Device: ./s5d1/Law Order S5 D1
+Title: unknown
+Provider ID: 
+Number of tracks: 8
+Longest track: 3
+
+  Track 1:
+    Length: 21.36 seconds (0.36 minutes)
+    Resolution: 720x576
+    Aspect: 16/9
+    Format: PAL @ 25.00 fps
+    Chapters: 2
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 2:
+    Length: 1.44 seconds (0.02 minutes)
+    Resolution: 720x576
+    Aspect: 16/9
+    Format: PAL @ 25.00 fps
+    Chapters: 3
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 3:
+    Length: 9955.04 seconds (165.92 minutes)
+    Resolution: 720x576
+    Aspect: 16/9
+    Format: PAL @ 25.00 fps
+    Chapters: 17
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 4:
+    Length: 2429.12 seconds (40.49 minutes)
+    Resolution: 720x576
+    Aspect: 16/9
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  Track 5:
+    Length: 2491.48 seconds (41.52 minutes)
+    Resolution: 720x576
+    Aspect: 16/9
+    Format: PAL @ 25.00 fps
+    Chapters: 5
+    Audio streams: 1
+    Subtitle streams: 0
+      Audio 1: English (en) - ac3, 48000 Hz, 2 channels
+
+  ... and 3 more tracks
